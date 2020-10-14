@@ -1,0 +1,35 @@
+# Server settings
+server:
+  port: 8008
+
+#thymeleaf 配置
+spring:
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    suffix: .html
+    template-loader-path: classpath:/templates/
+    servlet:
+      content-type: text/html
+#缓存设置为false, 这样修改之后马上生效，便于调试
+    cache: false
+
+#数据库
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: 8558553
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+          #自己重写的配置类，默认使用utf8编码
+        dialect: com.app.manager.config.MySQLConfig
+#显示SQL语句
+    show-sql: true
+#不加下面这句则不会默认创建MyISAM引擎的数据库
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
